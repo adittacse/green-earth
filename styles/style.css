@@ -1,0 +1,18 @@
+.font-inter {
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.primary-bg-color {
+    background-color: #15803D;
+}
+
+.secondary-bg-color {
+    background-color: #FACC15;
+}
+
+.primary-color {
+    color: #15803D;
+}
