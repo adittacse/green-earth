@@ -1,3 +1,9 @@
+const loadPlantsCategories = (id) => {
+    fetch(`https://openapi.programming-hero.com/api/category/${id}`)
+        .then((res) => res.json())
+        .then((data) => displayPlants(data.plants));
+}
+
 const loadCategories = () => {
     fetch("https://openapi.programming-hero.com/api/categories")
         .then((res) => res.json())
@@ -16,7 +22,7 @@ const displayCategories = (categories) => {
         const ul = document.createElement("ul");
         ul.classList.add("ms-2.5");
         ul.innerHTML = `
-        <li class="secondary-color py-2"><a href="#">${category.category_name}</a></li>
+        <li onclick="loadPlantsCategories(${category.id})" class="secondary-color py-2"><a href="#">${category.category_name}</a></li>
         `;
 
         categoriesContainer.appendChild(ul);
