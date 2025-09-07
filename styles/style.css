@@ -20,3 +20,7 @@
 .secondary-color {
     color: #1F2937;
 }
+
+ul li {
+    list-style: disc;
+}
