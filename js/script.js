@@ -1,3 +1,28 @@
+const loadCategories = () => {
+    fetch("https://openapi.programming-hero.com/api/categories")
+        .then((res) => res.json())
+        .then((data) => displayCategories(data.categories));
+}
+
+const displayCategories = (categories) => {
+    const categoriesContainer = document.getElementById("categories-container");
+    categoriesContainer.innerHTML = "";
+
+    const h2 = document.createElement("h2");
+    h2.innerHTML = `<h2 class="text-xl font-bold mb-4">Categories</h2>`;
+    categoriesContainer.appendChild(h2);
+
+    categories.forEach(category => {
+        const ul = document.createElement("ul");
+        ul.classList.add("ms-2.5");
+        ul.innerHTML = `
+        <li class="secondary-color py-2"><a href="#">${category.category_name}</a></li>
+        `;
+
+        categoriesContainer.appendChild(ul);
+    });
+}
+
 const loadAllPants = () => {
     fetch("https://openapi.programming-hero.com/api/plants")
         .then((res) => res.json())
@@ -36,3 +61,4 @@ const displayPlants = (plants) => {
 }
 
 loadAllPants();
+loadCategories();
