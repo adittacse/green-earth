@@ -1,7 +1,20 @@
+const removeActiveClass = () => {
+    const activeCategories = document.querySelectorAll(".active");
+    
+    for (const activeCategory of activeCategories) {
+        activeCategory.classList.remove("active");
+    }
+}
+
 const loadPlantsCategories = (id) => {
     fetch(`https://openapi.programming-hero.com/api/category/${id}`)
         .then((res) => res.json())
-        .then((data) => displayPlants(data.plants));
+        .then((data) => {
+            removeActiveClass();
+            const clickedCategory = document.getElementById(`active-${id}`);
+            clickedCategory.classList.add("active");
+            displayPlants(data.plants)
+        });
 }
 
 const loadCategories = () => {
@@ -22,7 +35,7 @@ const displayCategories = (categories) => {
         const ul = document.createElement("ul");
         ul.classList.add("ms-2.5");
         ul.innerHTML = `
-        <li onclick="loadPlantsCategories(${category.id})" class="secondary-color py-2"><a href="#">${category.category_name}</a></li>
+        <li id="active-${category.id}" onclick="loadPlantsCategories(${category.id})" class="secondary-color cursor-pointer px-2 py-2">${category.category_name}</li>
         `;
 
         categoriesContainer.appendChild(ul);

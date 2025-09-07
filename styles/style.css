@@ -24,3 +24,9 @@
 .about-ul li {
     list-style: disc;
 }
+
+.active {
+    color: white;
+    background-color: #15803D;
+    border-radius: 8px;
+}
