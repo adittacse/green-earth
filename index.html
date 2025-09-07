@@ -60,12 +60,18 @@
     <section class="main-container bg-[#DCFCE770] py-24">
         <!-- sidebar, cards, cart -->
         <h2 class="text-3xl text-center font-semibold secondary-color mb-[40px]">Choose Your Trees</h2>
-        <div class="flex w-11/12 mx-auto mb-[100px]">
+        <div class="flex w-11/12 mx-auto gap-[30px] mb-[100px]">
             <div class="w-2/12 border-2">
-                sidebar
+                <h2 class="text-xl font-bold mb-4">Categories</h2>
+                <ul id="category" class="ms-2.5">
+                    <li><a href="#">All Trees</a></li>
+                    <li><a href="#">Fruit Trees</a></li>
+                    <li><a href="#">Flowering Trees</a></li>
+                    <li><a href="#">Shade Trees</a></li>
+                </ul>
             </div>
-            <div class="w-8/12 border-2">
-                cards
+            <div id="cards-container" class="grid grid-cols-3 gap-[30px] w-8/12">
+                <!-- cards will come from js -->
             </div>
             <div class="w-2/12 border-2">
                 cart
@@ -80,7 +86,7 @@
             </div>
             <div class="md:w-1/2 ">
                 <p class="opacity-80 mb-5">Green Earth is a global tree plantation initiative dedicated to fighting climate change. Since our start, we’ve planted over 500,000 trees worldwide. By joining our campaign, you help restore forests, create habitats for wildlife, and combat global warming.</p>
-                <ul class="opacity-80 ml-5">
+                <ul class="about-ul opacity-80 ml-5">
                     <li>Restoration of natural habitats</li>
                     <li>Improvement of air quality</li>
                     <li>Support for local communities</li>
@@ -130,5 +136,7 @@
     <footer class="bg-[#14532D] py-6 text-center text-white">
         <p>© 2025 Green Earth. All Rights Reserved.</p>
     </footer>
+
+    <script src="./js/script.js"></script>
 </body>
 </html>
