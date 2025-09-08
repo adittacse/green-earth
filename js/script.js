@@ -74,8 +74,8 @@ const displayPlantDetails = (plant) => {
     const detailsContainer = document.getElementById("details-container");
     detailsContainer.innerHTML = `
     <h2 class="text-2xl font-semibold">${plant.name}</h2>
-    <figure class="rounded-lg">
-        <img class="w-full h-[300px]" src="${plant.image}" alt="plant image" />
+    <figure>
+        <img class="w-full h-[300px] rounded-lg" src="${plant.image}" alt="plant image" />
     </figure>
     <p class="mb-1"><span class="font-bold">Category:</span> ${plant.category}</p>
     <p class="mb-1"><span class="font-bold">Price:</span> ৳${plant.price}</p>
