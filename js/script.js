@@ -16,7 +16,9 @@ const addToCart = (plant) => {
 }
 
 const removeFromCart = (id) => {
+    console.log(id)
     cart = cart.filter((item) => item.id !== id);
+    console.log(cart)
     displayCartItems();
 }
 
@@ -30,38 +32,34 @@ const manageSpinner = (status) => {
     }
 }
 
-const displayCartItems = () => {
+function displayCartItems() {
     const cartContainer = document.getElementById("cart-container");
-    const totalResult = document.getElementById("totalResult");
-
+    const totalResult   = document.getElementById("totalResult");
+    
     cartContainer.innerHTML = "";
-    totalResult.innerHTML = "";
     let total = 0;
-
+    
     cart.forEach(item => {
         total += item.price * item.quantity;
 
         const div = document.createElement("div");
+        div.className = "flex justify-between items-center bg-[#F0FDF4] rounded-lg px-3 py-2 mb-2";
         div.innerHTML = `
-        <div id="item-container" class="flex justify-between items-center bg-[#F0FDF4] rounded-lg px-3 py-2 mb-2">
-            <div>
-                <h3 class="font-semibold mb-1">${item.name}</h3>
-                <p class="text-[#1F293750]">৳${item.price} x ${item.quantity}</p>
-            </div>
-            <button onclick="removeFromCart(${item.id})">
-                <i class="fa-solid fa-xmark text-[#1F293750]"></i>
-            </button>
+        <div>
+            <h3 class="font-semibold mb-1">${item.name}</h3>
+            <p class="text-[#1F293750]">৳${item.price} x ${item.quantity}</p>
         </div>
+        <button type="button" onclick="removeFromCart(${item.id})">
+            <i class="fa-solid fa-xmark text-[#1F293750]"></i>
+        </button>
         `;
-        
-        totalResult.innerHTML = `
-        <h2 class="text-xl font-semibold mb-2">Total:</h2>
-        <h2 class="text-xl font-semibold mb-2">৳${total}</h2>
-        `;
-        
         cartContainer.appendChild(div);
-        cartContainer.appendChild(totalResult);
     });
+    
+    totalResult.innerHTML = `
+    <h2 class="text-xl font-semibold mb-2">Total:</h2>
+    <h2 class="text-xl font-semibold mb-2">৳${total}</h2>
+    `;
 }
 
 const loadPlantDetails = (id) => {
