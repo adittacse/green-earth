@@ -13,6 +13,11 @@ const addToCart = (plant) => {
     displayCartItems();
 }
 
+const removeFromCart = (id) => {
+    cart = cart.filter((item) => item.id !== id);
+    displayCartItems();
+}
+
 const displayCartItems = () => {
     const cartContainer = document.getElementById("cart-container");
     const totalResult = document.getElementById("totalResult");
@@ -31,7 +36,9 @@ const displayCartItems = () => {
                 <h3 class="font-semibold mb-1">${item.name}</h3>
                 <p class="text-[#1F293750]">৳${item.price} x ${item.quantity}</p>
             </div>
-            <i class="fa-solid fa-xmark text-[#1F293750]"></i>
+            <button onclick="removeFromCart(${item.id})">
+                <i class="fa-solid fa-xmark text-[#1F293750]"></i>
+            </button>
         </div>
         `;
         
