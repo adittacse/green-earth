@@ -1,3 +1,50 @@
+let cart = [];
+
+const addToCart = (plant) => {
+    const {id, name, price} = plant;
+    let checkExistingItem = cart.find((item) => item.id === id);
+
+    if (checkExistingItem) {
+        checkExistingItem.quantity += 1;
+    } else {
+        cart.push({id, name, price, quantity: 1});
+    }
+
+    displayCartItems();
+}
+
+const displayCartItems = () => {
+    const cartContainer = document.getElementById("cart-container");
+    const totalResult = document.getElementById("totalResult");
+
+    cartContainer.innerHTML = "";
+    totalResult.innerHTML = "";
+    let total = 0;
+
+    cart.forEach(item => {
+        total += item.price * item.quantity;
+
+        const div = document.createElement("div");
+        div.innerHTML = `
+        <div id="item-container" class="flex justify-between items-center bg-[#F0FDF4] rounded-lg px-3 py-2 mb-2">
+            <div>
+                <h3 class="font-semibold mb-1">${item.name}</h3>
+                <p class="text-[#1F293750]">৳${item.price} x ${item.quantity}</p>
+            </div>
+            <i class="fa-solid fa-xmark text-[#1F293750]"></i>
+        </div>
+        `;
+        
+        totalResult.innerHTML = `
+        <h2 class="text-xl font-semibold mb-2">Total:</h2>
+        <h2 class="text-xl font-semibold mb-2">৳${total}</h2>
+        `;
+        
+        cartContainer.appendChild(div);
+        cartContainer.appendChild(totalResult);
+    });
+}
+
 const removeActiveClass = () => {
     const activeCategories = document.querySelectorAll(".active");
     
@@ -53,6 +100,7 @@ const displayPlants = (plants) => {
     cardsContainer.innerHTML = "";
 
     plants.forEach(plant => {
+        const id = plant.id;
         const cardDiv = document.createElement("div");
         cardDiv.classList.add("card");
         cardDiv.classList.add("bg-base-100");
@@ -60,9 +108,7 @@ const displayPlants = (plants) => {
         cardDiv.classList.add("p-4");
         cardDiv.innerHTML = `
         <figure class="h-[170px] rounded-lg">
-            <img
-            src="${plant.image}"
-            alt="plant image" />
+            <img src="${plant.image}" alt="plant image" />
         </figure>
         <div class="card-body mt-3 p-0">
             <h2 class="card-title">${plant.name}</h2>
@@ -71,9 +117,13 @@ const displayPlants = (plants) => {
                 <div class="badge primary-color bg-[#DCFCE7]">${plant.category}</div>
                 <p class="text-end font-semibold">৳${plant.price}</p>
             </div>
-            <button class="btn btn-primary primary-bg-color rounded-full w-full">Add to Cart</button>
+            <button id="addToCart-${id}" class="btn btn-primary primary-bg-color rounded-full w-full btn-cart">Add to Cart</button>
         </div>
         `;
+        // onclick="addToCart(${plant})"
+        
+        const clickedPlant = cardDiv.querySelector(".btn-cart");
+        clickedPlant.addEventListener("click", () => addToCart(plant));
 
         cardsContainer.appendChild(cardDiv);
     });
