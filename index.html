@@ -60,14 +60,14 @@
     <section class="main-container bg-[#DCFCE770] py-24">
         <!-- sidebar, cards, cart -->
         <h2 class="text-3xl text-center font-semibold secondary-color mb-[40px]">Choose Your Trees</h2>
-        <div class="flex w-11/12 mx-auto gap-[30px] mb-[100px]">
-            <div id="categories-container" class="w-2/12">
+        <div class="grid grid-cols-2 md:grid-cols-12 w-11/12 mx-auto gap-[30px] mb-[100px]">
+            <div id="categories-container" class="col-span-12 md:col-span-3 lg:col-span-2">
                 <!-- categories will come from js -->
             </div>
-            <div id="cards-container" class="grid grid-cols-3 gap-[30px] w-8/12">
+            <div id="cards-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 col-span-12 md:col-span-9 lg:col-span-8 gap-[30px]">
                 <!-- cards will come from js -->
             </div>
-            <div  class="w-2/12 bg-white rounded-2xl p-4">
+            <div class="bg-white rounded-2xl p-4 col-span-12 lg:col-span-2">
                 <h2 class="text-xl font-bold mb-2">Your Cart</h2>
                 <div id="cart-container">
                     <!-- data come from js -->
@@ -94,6 +94,21 @@
             </div>
         </div>
     </section>
+
+    <!-- Open the modal using ID.showModal() method -->
+    <button class="btn" onclick="my_modal_5.showModal()">open modal</button>
+    <dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
+    <div class="modal-box">
+        <h3 class="text-lg font-bold">Hello!</h3>
+        <p class="py-4">Press ESC key or click the button below to close</p>
+        <div class="modal-action">
+        <form method="dialog">
+            <!-- if there is a button in form, it will close the modal -->
+            <button class="btn">Close</button>
+        </form>
+        </div>
+    </div>
+    </dialog>
 
     <!-- our impact -->
     <section class="bg-[#CFF0DC] flex flex-col justify-center">

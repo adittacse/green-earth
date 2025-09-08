@@ -111,7 +111,7 @@ const displayPlants = (plants) => {
             <img src="${plant.image}" alt="plant image" />
         </figure>
         <div class="card-body mt-3 p-0">
-            <h2 class="card-title">${plant.name}</h2>
+            <h2 class="card-title cursor-pointer">${plant.name}</h2>
             <p>${plant.description}</p>
             <div class="flex items-center justify-center mb-3">
                 <div class="badge primary-color bg-[#DCFCE7]">${plant.category}</div>
