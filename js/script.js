@@ -45,6 +45,27 @@ const displayCartItems = () => {
     });
 }
 
+const loadPlantDetails = (id) => {
+    fetch(`https://openapi.programming-hero.com/api/plant/${id}`)
+        .then((res) => res.json())
+        .then((data) => displayPlantDetails(data.plants));
+}
+
+const displayPlantDetails = (plant) => {
+    const detailsContainer = document.getElementById("details-container");
+    detailsContainer.innerHTML = `
+    <h2 class="text-2xl font-semibold">${plant.name}</h2>
+    <figure class="rounded-lg">
+        <img class="w-full h-[300px]" src="${plant.image}" alt="plant image" />
+    </figure>
+    <p class="mb-1"><span class="font-bold">Category:</span> ${plant.category}</p>
+    <p class="mb-1"><span class="font-bold">Price:</span> ৳${plant.price}</p>
+    <p><span class="font-bold">Description:</span> ${plant.description}</p>
+    `;
+
+    document.getElementById("my_modal_5").showModal();
+}
+
 const removeActiveClass = () => {
     const activeCategories = document.querySelectorAll(".active");
     
@@ -111,7 +132,7 @@ const displayPlants = (plants) => {
             <img src="${plant.image}" alt="plant image" />
         </figure>
         <div class="card-body mt-3 p-0">
-            <h2 class="card-title cursor-pointer">${plant.name}</h2>
+            <h2 onclick="loadPlantDetails(${plant.id})" class="card-title cursor-pointer">${plant.name}</h2>
             <p>${plant.description}</p>
             <div class="flex items-center justify-center mb-3">
                 <div class="badge primary-color bg-[#DCFCE7]">${plant.category}</div>
