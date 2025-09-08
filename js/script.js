@@ -16,9 +16,7 @@ const addToCart = (plant) => {
 }
 
 const removeFromCart = (id) => {
-    console.log(id)
     cart = cart.filter((item) => item.id !== id);
-    console.log(cart)
     displayCartItems();
 }
 
