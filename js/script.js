@@ -141,7 +141,6 @@ const displayPlants = (plants) => {
             <button id="addToCart-${id}" class="btn btn-primary primary-bg-color rounded-full w-full btn-cart">Add to Cart</button>
         </div>
         `;
-        // onclick="addToCart(${plant})"
         
         const clickedPlant = cardDiv.querySelector(".btn-cart");
         clickedPlant.addEventListener("click", () => addToCart(plant));
