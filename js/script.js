@@ -2,6 +2,8 @@ let cart = [];
 
 const addToCart = (plant) => {
     const {id, name, price} = plant;
+    alert(`${name} has been added to the cart.`);
+    
     let checkExistingItem = cart.find((item) => item.id === id);
 
     if (checkExistingItem) {
@@ -16,6 +18,16 @@ const addToCart = (plant) => {
 const removeFromCart = (id) => {
     cart = cart.filter((item) => item.id !== id);
     displayCartItems();
+}
+
+const manageSpinner = (status) => {
+    if (status === true) {
+        document.getElementById("spinner").classList.remove("hidden");
+        document.getElementById("total-card-container").classList.add("hidden");
+    } else {
+        document.getElementById("spinner").classList.add("hidden");
+        document.getElementById("total-card-container").classList.remove("hidden");
+    }
 }
 
 const displayCartItems = () => {
@@ -82,6 +94,7 @@ const removeActiveClass = () => {
 }
 
 const loadPlantsCategories = (id) => {
+    manageSpinner(true);
     fetch(`https://openapi.programming-hero.com/api/category/${id}`)
         .then((res) => res.json())
         .then((data) => {
@@ -118,6 +131,7 @@ const displayCategories = (categories) => {
 }
 
 const loadAllPants = () => {
+    manageSpinner(true);
     fetch("https://openapi.programming-hero.com/api/plants")
         .then((res) => res.json())
         .then((data) => displayPlants(data.plants));
@@ -154,6 +168,7 @@ const displayPlants = (plants) => {
 
         cardsContainer.appendChild(cardDiv);
     });
+    manageSpinner(false);
 }
 
 loadAllPants();

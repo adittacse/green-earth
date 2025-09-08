@@ -60,7 +60,12 @@
     <section class="main-container bg-[#DCFCE770] py-24">
         <!-- sidebar, cards, cart -->
         <h2 class="text-3xl text-center font-semibold secondary-color mb-[40px]">Choose Your Trees</h2>
-        <div class="grid grid-cols-2 md:grid-cols-12 w-11/12 mx-auto gap-[30px] mb-[100px]">
+
+        <div id="spinner" class="flex justify-center items-center py-10 hidden">
+            <span class="loading loading-dots loading-xl"></span>
+        </div>
+
+        <div id="total-card-container" class="grid grid-cols-2 md:grid-cols-12 w-11/12 mx-auto gap-[30px] mb-[100px]">
             <div id="categories-container" class="col-span-12 md:col-span-3 lg:col-span-2">
                 <!-- categories will come from js -->
             </div>
