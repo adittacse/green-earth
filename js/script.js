@@ -155,7 +155,7 @@ const displayPlants = (plants) => {
                 <div class="badge primary-color bg-[#DCFCE7]">${plant.category}</div>
                 <p class="text-end font-semibold">৳${plant.price}</p>
             </div>
-            <button id="addToCart-${id}" class="btn btn-primary primary-bg-color rounded-full w-full btn-cart">Add to Cart</button>
+            <button id="addToCart-${id}" class="btn primary-bg-color text-white rounded-full w-full btn-cart">Add to Cart</button>
         </div>
         `;
         
